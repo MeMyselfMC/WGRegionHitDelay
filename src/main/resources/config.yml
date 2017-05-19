@@ -1,0 +1,64 @@
+#  _       ________   ____             _                __  ___ __     ____       __
+# | |     / / ____/  / __ \___  ____ _(_)___  ____     / / / (_) /_   / __ \___  / /___ ___  __
+# | | /| / / / __   / /_/ / _ \/ __ `/ / __ \/ __ \   / /_/ / / __/  / / / / _ \/ / __ `/ / / /
+# | |/ |/ / /_/ /  / _, _/  __/ /_/ / / /_/ / / / /  / __  / / /_   / /_/ /  __/ / /_/ / /_/ /
+# |__/|__/\____/  /_/ |_|\___/\__, /_/\____/_/ /_/  /_/ /_/_/\__/  /_____/\___/_/\__,_/\__, /
+#                            /____/                                                   /____/
+
+# Different hit delays for each individual WorldGuard region!
+
+# --IMPORTANT--
+# This plugin won't do much by itself on Bukkit versions 1.9 and above due to the new PvP mechanics.
+# If your server version is 1.9 or greater you will need to accompany WGRegionHitDelay with
+# a plugin that restores PvP attribute values to the 1.8 defaults. Here's one of many:
+# https://www.spigotmc.org/resources/oldcombatmechanics-disable-1-9-hit-cooldown.19510/
+
+
+# Options
+
+options:
+  notifications:
+    # Should players be notified about hit delay changes after entering and/or leaving a region?
+    # The chat message may be changed in the locale section.
+    enabled: true
+    # Sounds for versions 1.9 and up: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html
+    # Sounds for earlier versions: https://jd.bukkit.org/org/bukkit/Sound.html
+    # Set to '' if you don't wish to accompany the notification message with a sound.
+    sound: BLOCK_NOTE_BASS # NOTE_BASS for versions earlier than 1.9.
+  # Should the hit delay of all online players be reset to the vanilla default when the plugin is unloaded?
+  # Leave enabled in case you ever decide to unload WGRegionHitDelay while the server is running.
+  reset-on-unload: true
+  # Should extra information about the plugin be printed to the console?
+  debug: false
+  # Should statistics for this plugin be submitted to bStats.org?
+  # A full plugin reload is required for changes to this option to be applied.
+  metrics: true
+
+# Regions
+# Region IDs are case-sensitive, and the hit delay is in ticks.
+
+regions:
+  world:
+    # Format: {Region ID}: {Hit Delay}
+    # When a player leaves a region and the one they enter doesn't have a custom hit delay set, their hit delay will be reset.
+    # IF YOU HAVE OVERLAPPING REGIONS YOU WILL NEED TO SET UP PRIORITIES!
+    # IN ORDER FOR THE GLOBAL REGION TO BE ACCOUNTED FOR, YOU NEED TO DEFINE IT IT'S WORLDS'S WORLDGUARD REGIONS.YML FILE.
+    # THE EASIEST WAY TO DO THAT IS BY ADDING A FLAG TO IT IN-GAME WITH THE /RG FLAG COMMAND.
+    # There are 20 ticks in 1 second.
+    __global__: 20
+
+# Locale
+# Colour Codes: http://ess.khhq.net/mc/
+
+locale:
+  # Shown to players if their hit delay changes after entering and/or leaving a region. Use %hit_delay% for the player's new hit delay (in ticks).
+  hit-delay-change-notification: '&e&lThis region''s hit delay modifier is &f&l%hit_delay% &e&ltick(s)!'
+  # Returned after a successful attempt to reload the plugin's configuration using the /wgrhd reload command.
+  config-reloaded: '&8&l(&a&lWGRHD&8&l) &aThe configuration has successfully been reloaded!'
+  # Returned when a player executes /wgrhd, without any sub-commands.
+  command-usage: '&8&l(&a&lWGRHD&8&l) &aUsage: &7/wgrhd [reload]'
+  error:
+    # Returned when a player provides an invalid sub-command or argument for the /wgrhd command.
+    invalid-arguments: '&8&l(&c&lWGRHD&8&l) &cInvalid arguments provided!'
+    # Returned when a player attempts to run a WGRegionHitDelay command, but they don't have permission to.
+    no-permission: '&8&l(&c&lWGRHD&8&l) &cYou don''t have permission to do that!'

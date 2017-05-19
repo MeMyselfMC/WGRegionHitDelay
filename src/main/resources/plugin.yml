@@ -1,0 +1,26 @@
+name: WGRegionHitDelay
+author: MeMyself
+description: Different hit delays for each individual WorldGuard region!
+
+version: ${version}
+main: io.memyself.wgrhd.WGRHD
+
+depend: [WorldEdit, WorldGuard]
+
+commands:
+  wgregionhitdelay:
+    description: Main WGRegionHitDelay command.
+    aliases: [wgrhd]
+
+permissions:
+  wgrhd.*:
+    description: All WGRegionHitDelay permission nodes.
+    children:
+      wgrhd.reload: true
+      wgrhd.notify: true
+  wgrhd.reload:
+    description: Needed for the /wgrhd reload command.
+    default: op
+  wgrhd.notify:
+    description: Receive notifications when your hit delay is updated.
+    default: true
