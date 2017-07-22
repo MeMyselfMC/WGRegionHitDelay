@@ -56,7 +56,7 @@ locale:
   # Returned after a successful attempt to reload the plugin's configuration using the /wgrhd reload command.
   config-reloaded: '&8&l(&a&lWGRHD&8&l) &aThe configuration has successfully been reloaded!'
   # Returned when a player executes /wgrhd, without any sub-commands.
-  command-usage: '&8&l(&a&lWGRHD&8&l) &aUsage: &7/wgrhd [reload]'
+  command-usage: '&8&l(&a&lWGRHD&8&l) &aUsage: &7/wgrhd <reload>'
   error:
     # Returned when a player provides an invalid sub-command or argument for the /wgrhd command.
     invalid-arguments: '&8&l(&c&lWGRHD&8&l) &cInvalid arguments provided!'
