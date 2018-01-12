@@ -20,9 +20,9 @@ public class WGRHD
 		}
 		new Utilities(this);
 		
-		getCommand("wgrhd").setExecutor(new CommandManager(this));
-		
 		getServer().getPluginManager().registerEvents(new EventListener(this), this);
+		
+		getCommand("wgrhd").setExecutor(new CommandManager(this));
 		
 		if(getConfig().getBoolean("options.metrics")) {
 			if(getConfig().getBoolean("options.debug")) getLogger().info("[DEBUG] Will be attempting to submit statistics to bStats.org.");
