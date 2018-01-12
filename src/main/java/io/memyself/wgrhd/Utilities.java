@@ -26,7 +26,7 @@ public class Utilities {
 		wgrhd = instance;
 	}
 	
-	static void notify(Player player) {
+	public static void notify(Player player) {
 		if(wgrhd.getConfig().getString("locale.hit-delay-change-notification") != null && !wgrhd.getConfig().getString("locale.hit-delay-change-notification").isEmpty()) {
 			player.sendMessage(ChatColor.translateAlternateColorCodes('&', wgrhd.getConfig().getString("locale.hit-delay-change-notification").replaceAll("%hit_delay%", String.valueOf(player.getMaximumNoDamageTicks()))));
 		}
@@ -65,7 +65,7 @@ public class Utilities {
 		}
 	}
 	
-	static ProtectedRegion getHighestPriorityRegion(Location loc) {
+	public static ProtectedRegion getHighestPriorityRegion(Location loc) {
 		ApplicableRegionSet regions = getApplicableRegions(loc);
 		
 		if(regions != null) {
