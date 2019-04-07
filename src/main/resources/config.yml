@@ -5,12 +5,13 @@
 # |__/|__/\____/  /_/ |_|\___/\__, /_/\____/_/ /_/  /_/ /_/_/\__/  /_____/\___/_/\__,_/\__, /
 #                            /____/                                                   /____/
 
-# Different hit delays for each individual WorldGuard region!
+# Different hit delays for WorldGuard regions!
 
 # --IMPORTANT--
-# This plugin won't do much by itself on Bukkit versions 1.9 and above due to the new PvP mechanics.
+# The PvP mechanics of Minecraft versions 1.9 and above make this plugin useless by itself.
 # If your server version is 1.9 or greater you will need to accompany WGRegionHitDelay with
-# a plugin that restores PvP attribute values to the 1.8 defaults. Here's one of many:
+# a plugin that restores the 1.8 default PvP attribute values.
+# Here's one of many:
 # https://www.spigotmc.org/resources/oldcombatmechanics-disable-1-9-hit-cooldown.19510/
 
 
@@ -23,7 +24,7 @@ options:
     enabled: true
     # Sounds for versions 1.9 and up: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html
     # Sounds for earlier versions: https://jd.bukkit.org/org/bukkit/Sound.html
-    # Set to '' if you don't wish to accompany the notification message with a sound.
+    # Set to '' if you do not wish to accompany the notification message with a sound.
     sound: BLOCK_NOTE_BASS # NOTE_BASS for versions earlier than 1.9.
   # Should the hit delay of all online players be reset to the vanilla default when the plugin is unloaded?
   # Leave enabled in case you ever decide to unload WGRegionHitDelay while the server is running.
@@ -42,8 +43,8 @@ regions:
     # Format: {Region ID}: {Hit Delay}
     # When a player leaves a region and the one they enter doesn't have a custom hit delay set, their hit delay will be reset.
     # IF YOU HAVE OVERLAPPING REGIONS YOU WILL NEED TO SET UP PRIORITIES!
-    # IN ORDER FOR THE GLOBAL REGION TO BE ACCOUNTED FOR, YOU NEED TO DEFINE IT IT'S WORLDS'S WORLDGUARD REGIONS.YML FILE.
-    # THE EASIEST WAY TO DO THAT IS BY ADDING A FLAG TO IT IN-GAME WITH THE /RG FLAG COMMAND.
+    #   IN ORDER FOR THE GLOBAL REGION TO BE ACCOUNTED FOR, YOU NEED TO DEFINE IT IN IT'S WORLD'S WORLDGUARD REGIONS.YML FILE.
+    #   THE EASIEST WAY TO DO THAT IS BY ADDING ANY FLAG TO IT IN-GAME WITH THE /RG FLAG COMMAND.
     # There are 20 ticks in 1 second.
     __global__: 20
 
@@ -52,7 +53,7 @@ regions:
 
 locale:
   # Shown to players if their hit delay changes after entering and/or leaving a region. Use %hit_delay% for the player's new hit delay (in ticks).
-  hit-delay-change-notification: '&e&lThis region''s hit delay modifier is &f&l%hit_delay% &e&ltick(s)!'
+  hit-delay-change-notification: '&e&lThe hit delay in this region is &f&l%hit_delay% &e&ltick(s)!'
   # Returned after a successful attempt to reload the plugin's configuration using the /wgrhd reload command.
   config-reloaded: '&8&l(&a&lWGRHD&8&l) &aThe configuration has successfully been reloaded!'
   # Returned when a player executes /wgrhd, without any sub-commands.
