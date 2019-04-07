@@ -13,24 +13,32 @@ public class WGRHD
 	
 	@Override
 	public void onEnable() {
-		if(!new File(getDataFolder(), "config.yml").exists()) {
-			saveDefaultConfig();
+		String bukkitVersion = getServer().getBukkitVersion().substring(0, getServer().getBukkitVersion().indexOf("-"));
+		
+		if(Integer.parseInt(bukkitVersion.split("\\.")[1]) >= 13) {
+			getLogger().warning("This plugin is incompatible with Minecraft server version " + bukkitVersion + "!");
 			
-			reloadConfig();
-		}
-		new Utilities(this);
-		
-		getServer().getPluginManager().registerEvents(new EventListener(this), this);
-		
-		getCommand("wgrhd").setExecutor(new CommandManager(this));
-		
-		if(getConfig().getBoolean("options.metrics")) {
-			if(getConfig().getBoolean("options.debug")) getLogger().info("[DEBUG] Will be attempting to submit statistics to bStats.org.");
+			getServer().getPluginManager().disablePlugin(this);
+		} else {
+			if(!new File(getDataFolder(), "config.yml").exists()) {
+				saveDefaultConfig();
+				
+				reloadConfig();
+			}
+			new Utilities(this);
 			
-			new MetricsLite(this);
+			getServer().getPluginManager().registerEvents(new EventListener(this), this);
+			
+			getCommand("wgrhd").setExecutor(new CommandManager(this));
+			
+			if(getConfig().getBoolean("options.metrics")) {
+				if(getConfig().getBoolean("options.debug")) getLogger().info("[DEBUG] Will be attempting to submit statistics to bStats.org.");
+				
+				new MetricsLite(this);
+			}
+			
+			getLogger().info("WGRegionHitDelay v" + getDescription().getVersion() + " has been enabled!");
 		}
-		
-		getLogger().info("WGRegionHitDelay v" + getDescription().getVersion() + " has been enabled!");
 	}
 	
 	@Override
